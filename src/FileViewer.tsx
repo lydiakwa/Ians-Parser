@@ -1,10 +1,10 @@
-import { createColumnHelper } from "@tanstack/react-table";
-import { mkConfig, generateCsv, asBlob } from "export-to-csv";
-import { useMemo } from "react";
-import { type RecordType, type DBFFile } from "./dbf-file-reader/types";
-import Table from "./components/design/Table";
-import DescriptionList from "./components/design/DescriptionList";
-import useTable from "./components/design/Table/useTable";
+import { createColumnHelper } from '@tanstack/react-table';
+import { mkConfig, generateCsv, asBlob } from 'export-to-csv';
+import { useMemo } from 'react';
+import { type RecordType, type DBFFile } from './dbf-file-reader/types';
+import Table from './components/design/Table';
+import DescriptionList from './components/design/DescriptionList';
+import useTable from './components/design/Table/useTable';
 
 const columnHelper = createColumnHelper<RecordType>();
 
@@ -30,8 +30,8 @@ function FileViewer({ dbf, name }: { dbf: DBFFile; name: string }) {
     const csvRecord: Record<string, string | number> = {};
 
     for (const [k, v] of Object.entries(record)) {
-      if (typeof v !== "string" && typeof v !== "number") {
-        csvRecord[k] = v?.toString() || "";
+      if (typeof v !== 'string' && typeof v !== 'number') {
+        csvRecord[k] = v?.toString() || '';
       } else {
         csvRecord[k] = v;
       }
@@ -59,15 +59,15 @@ function FileViewer({ dbf, name }: { dbf: DBFFile; name: string }) {
         <DescriptionList.Item label="Record Length" value={dbf.recordLength} />
         <DescriptionList.Item
           label="File has a structural .cdx"
-          value={dbf.hasStructuralCDXFile ? "Yes" : "No"}
+          value={dbf.hasStructuralCDXFile ? 'Yes' : 'No'}
         />
         <DescriptionList.Item
           label="File has a Memo field"
-          value={dbf.hasMemoField ? "Yes" : "No"}
+          value={dbf.hasMemoField ? 'Yes' : 'No'}
         />
         <DescriptionList.Item
           label="File is a database (.dbc)"
-          value={dbf.isDBCDatabase ? "Yes" : "No"}
+          value={dbf.isDBCDatabase ? 'Yes' : 'No'}
         />
       </DescriptionList>
       <div className="mb-3">
@@ -76,6 +76,7 @@ function FileViewer({ dbf, name }: { dbf: DBFFile; name: string }) {
         </a>
       </div>
       {/* TODO: appease typescript :sob: */}
+      {/* @ts-expect-error todo*/}
       <Table table={table} caption="Records" />
     </>
   );

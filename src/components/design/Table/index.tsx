@@ -2,7 +2,7 @@ import {
   flexRender,
   type RowData,
   type Table as ReactTable,
-} from "@tanstack/react-table";
+} from '@tanstack/react-table';
 
 function Table({
   caption,
@@ -66,40 +66,40 @@ function Pagination({ table }: { table: ReactTable<RowData> }) {
           onClick={() => table.firstPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          {"<<"}
+          {'<<'}
         </button>
         <button
           className="join-item btn"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          {"<"}
+          {'<'}
         </button>
         <button
           className="join-item btn"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          {">"}
+          {'>'}
         </button>
         <button
           className="join-item btn"
           onClick={() => table.lastPage()}
           disabled={!table.getCanNextPage()}
         >
-          {">>"}
+          {'>>'}
         </button>
       </div>
       <div>
         <span className="flex items-center justify-end gap-1">
           <div>Page</div>
           <strong>
-            {table.getState().pagination.pageIndex + 1} of{" "}
+            {table.getState().pagination.pageIndex + 1} of{' '}
             {table.getPageCount().toLocaleString()}
           </strong>
         </span>
         <div>
-          Showing {table.getRowModel().rows.length.toLocaleString()} of{" "}
+          Showing {table.getRowModel().rows.length.toLocaleString()} of{' '}
           {table.getRowCount().toLocaleString()} Rows
         </div>
       </div>
