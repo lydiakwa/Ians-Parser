@@ -32,7 +32,9 @@ function App() {
 
     for (const file of dbfFiles) {
       const name = file.name.split('.')[0];
-      const memoFile = memoFiles.find((file) => file.name === `${name}.fpt`);
+      const memoFile = memoFiles.find(
+        (file) => file.name.toLowerCase() === `${name}.fpt`
+      );
 
       const dbfArrayBuffer = await fileToArrayBuffer(file);
       const memoArrayBuffer = memoFile && (await fileToArrayBuffer(memoFile));
