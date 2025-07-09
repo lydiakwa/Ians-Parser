@@ -1,11 +1,11 @@
-import Form from "./components/design/form";
-import { useForm, type SubmitHandler } from "react-hook-form";
-import { fileToArrayBuffer } from "./dbf-file-reader/utils";
-import { DBFFileReader } from "./dbf-file-reader";
-import React, { useState } from "react";
-import type { DBFFile } from "./dbf-file-reader/types";
-import FileViewer from "./FileViewer";
-import Tab from "./components/design/Tab";
+import Form from './components/design/form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { fileToArrayBuffer } from './dbf-file-reader/utils';
+import { DBFFileReader } from './dbf-file-reader';
+import React, { useState } from 'react';
+import type { DBFFile } from './dbf-file-reader/types';
+import FileViewer from './FileViewer';
+import Tab from './components/design/Tab';
 
 interface IFormValues {
   files: FileList;
@@ -21,13 +21,17 @@ function App() {
   const [dbfFiles, setDbfFiles] = useState<NamedDBFFile[]>([]);
 
   const onSubmit: SubmitHandler<IFormValues> = async ({ files }) => {
-    const dbfFiles = [...files].filter((file) => file.name.endsWith(".dbf"));
-    const memoFiles = [...files].filter((file) => file.name.endsWith(".fpt"));
+    const dbfFiles = [...files].filter((file) =>
+      file.name.toLowerCase().endsWith('.dbf')
+    );
+    const memoFiles = [...files].filter((file) =>
+      file.name.toLowerCase().endsWith('.fpt')
+    );
 
     const namedDBFFiles: NamedDBFFile[] = [];
 
     for (const file of dbfFiles) {
-      const name = file.name.split(".")[0];
+      const name = file.name.split('.')[0];
       const memoFile = memoFiles.find((file) => file.name === `${name}.fpt`);
 
       const dbfArrayBuffer = await fileToArrayBuffer(file);

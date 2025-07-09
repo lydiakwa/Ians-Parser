@@ -101,7 +101,6 @@ export class DBFFileReader {
       } else {
         dbfFile.memoBlockSize = 512;
       }
-      console.log(memoDataView);
     }
   }
 
