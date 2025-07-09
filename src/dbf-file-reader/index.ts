@@ -1,12 +1,12 @@
-import FieldReader from "./field-reader";
-import FILE_VERSION, { fileVersionForCode } from "./file-version-identifiers";
+import FieldReader from './field-reader';
+import FILE_VERSION, { fileVersionForCode } from './file-version-identifiers';
 import {
   FIELD_DELETED,
   type DBFFile,
   type FieldType,
   type RecordType,
-} from "./types";
-import { substr } from "./utils";
+} from './types';
+import { substr } from './utils';
 
 export class DBFFileReader {
   dbfFileBuffer: ArrayBuffer;
@@ -90,6 +90,7 @@ export class DBFFileReader {
 
   private setDBFFileMemoMetadata(dbfFile: DBFFile): void {
     if (this.memoFile) {
+      console.log(this.memoFile);
       const memoDataView = new DataView(this.memoFile);
       if (
         dbfFile.fileVersion === FILE_VERSION.VisualFoxPro ||
@@ -119,7 +120,7 @@ export class DBFFileReader {
 
       // Byte offset 0 - 10: Field name with a maximum of 10 characters.
       // If less than 10, it is padded with null characters (0x00).
-      const name = substr(this.dbfFileBuffer, pos, pos + 10).split("\0")[0];
+      const name = substr(this.dbfFileBuffer, pos, pos + 10).split('\0')[0];
 
       // Byte offset 11: Field type
       const type = substr(this.dbfFileBuffer, pos + 11) as FieldType;
