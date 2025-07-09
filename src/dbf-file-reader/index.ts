@@ -90,7 +90,6 @@ export class DBFFileReader {
 
   private setDBFFileMemoMetadata(dbfFile: DBFFile): void {
     if (this.memoFile) {
-      console.log(this.memoFile);
       const memoDataView = new DataView(this.memoFile);
       if (
         dbfFile.fileVersion === FILE_VERSION.VisualFoxPro ||
@@ -102,6 +101,7 @@ export class DBFFileReader {
       } else {
         dbfFile.memoBlockSize = 512;
       }
+      console.log(memoDataView);
     }
   }
 
