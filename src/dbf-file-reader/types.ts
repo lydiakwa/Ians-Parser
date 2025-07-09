@@ -1,15 +1,15 @@
 // C=string, N=numeric, F=float, Y=currency, L=logical, D=date, I=integer, M=memo, T=datetime, B=double
 export type FieldType =
-  | "C"
-  | "N"
-  | "F"
-  | "Y"
-  | "L"
-  | "D"
-  | "I"
-  | "M"
-  | "T"
-  | "B";
+  | 'C'
+  | 'N'
+  | 'F'
+  | 'Y'
+  | 'L'
+  | 'D'
+  | 'I'
+  | 'M'
+  | 'T'
+  | 'B';
 export type RecordValue = Date | string | number | boolean | null;
 
 export interface Field {
@@ -19,7 +19,8 @@ export interface Field {
   decimalPlaces?: number;
 }
 
-export const FIELD_DELETED = Symbol();
+// export const FIELD_DELETED = Symbol();
+export const FIELD_DELETED = 'Record Deleted';
 
 export type RecordType = Record<string, RecordValue> & {
   [FIELD_DELETED]?: true;
