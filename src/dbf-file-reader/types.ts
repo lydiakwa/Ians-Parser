@@ -23,7 +23,7 @@ export interface Field {
 export const FIELD_DELETED = 'Record Deleted';
 
 export type RecordType = Record<string, RecordValue> & {
-  [FIELD_DELETED]?: true;
+  [FIELD_DELETED]?: boolean;
 };
 
 export interface FileVersion {

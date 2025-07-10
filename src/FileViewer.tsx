@@ -30,9 +30,6 @@ function FileViewer({ dbf, name }: { dbf: DBFFile; name: string }) {
     const csvRecord: Record<string, string | number> = {};
 
     for (const [k, v] of Object.entries(record)) {
-      if (k === 'Record Deleted') {
-        console.log(k, v);
-      }
       if (typeof v !== 'string' && typeof v !== 'number') {
         csvRecord[k] = v?.toString() || '';
       } else {

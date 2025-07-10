@@ -162,10 +162,7 @@ export class DBFFileReader {
       // First character in field indicates deletion status (asterisk === deleted)
       let offset = 0;
 
-      if (dataView.getUint8(offset) === 0x2a) {
-        console.log(record);
-        record[FIELD_DELETED] = true;
-      }
+      record[FIELD_DELETED] = dataView.getUint8(offset) === 0x2a;
 
       offset++;
 
