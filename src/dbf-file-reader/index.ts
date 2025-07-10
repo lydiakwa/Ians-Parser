@@ -163,6 +163,7 @@ export class DBFFileReader {
       let offset = 0;
 
       if (dataView.getUint8(offset) === 0x2a) {
+        console.log(dataView.getUint8(offset));
         record[FIELD_DELETED] = true;
       }
 
